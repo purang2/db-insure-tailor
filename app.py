@@ -9,7 +9,7 @@ load_dotenv()
 
 # Set up OpenAI API key
 #openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+openai.api_key = st.secrets["openai"]
 
 def generate_prompt(age_group, job, household, region):
     age_data = metadata["A"][age_group]
