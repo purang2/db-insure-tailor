@@ -10,7 +10,7 @@ from PIL import Image
 favicon = Image.open('images/favicon.png')
 
 st.set_page_config(
-    page_title="[DB] 맞춤형 카드뉴스 문구 생성 AI",
+    page_title="DB손해보험의 고객맞춤형 카드뉴스 문구 생성 AI",
     page_icon=favicon,
 )
 
@@ -116,7 +116,7 @@ def generate_card_news(prompt):
     )
     return response.choices[0].message['content']
 
-st.title('[DB] 맞춤형 카드뉴스 문구 생성 AI')
+st.title('[DB] 고객맞춤형 카드뉴스 문구 생성 AI')
 
 age_group = st.selectbox('연령대', list(metadata["A"].keys()))
 job = st.selectbox('직업', list(metadata["B"].keys()))
