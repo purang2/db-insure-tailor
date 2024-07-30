@@ -101,7 +101,7 @@ def generate_card_news(prompt):
     )
     return response.choices[0].message['content']
 
-st.title('맞춤형 보험 카드뉴스 생성기')
+st.title('[DB손보] 맞춤형 카드뉴스 문구')
 
 age_group = st.selectbox('연령대', list(metadata["A"].keys()))
 job = st.selectbox('직업', list(metadata["B"].keys()))
