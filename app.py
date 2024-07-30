@@ -49,7 +49,7 @@ def generate_prompt(age_group, job, household, region):
     
     prompt = f"""
     당신은 ABC손해보험의 UX 라이팅 전문가입니다. 다음 고객 프로필에 맞는 보험 관련 문자 메시지 카드뉴스를 작성해주세요:
-
+    카드뉴스 최종 텍스트만 생성해주세요.
     고객 프로필:
     - 연령대: {age_group}
     - 직업: {job}
