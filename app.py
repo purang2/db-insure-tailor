@@ -39,17 +39,10 @@ def generate_prompt(age_group, job, household, region):
     3. 관련 이미지나 아이콘 제안
     4. 행동 유도 문구(CTA)
     """
-    prompt = f"""
-    def generate_prompt(age_group, job, household, region):
-    age_data = metadata["A"][age_group]
-    job_data = metadata["B"][job]
-    household_data = metadata["C"][household]
-    region_data = metadata["D"][region]
-    """
     
     prompt = f"""
     당신은 ABC손해보험의 UX 라이팅 전문가입니다. 다음 고객 프로필에 맞는 보험 관련 문자 메시지 카드뉴스를 작성해주세요:
-
+    
     고객 프로필:
     - 연령대: {age_group} (키워드: {', '.join(age_data['키워드'])})
     - 직업: {job} (특성: {', '.join(job_data['특성'])})
@@ -81,6 +74,7 @@ def generate_prompt(age_group, job, household, region):
     5. 행동 유도 문구(CTA): 다음 단계를 안내하는 문장 (15단어 이내)
 
     전체 카드뉴스 내용은 150단어를 넘지 않도록 해주세요. 
+    카드뉴스 최종 텍스트만 생성해주세요. 레이아웃을 모바일 환경에 특화하여 잘 고려해주세요.
     위 지침을 따라 고객 프로필에 맞는 구체적이면서도 간결한 카드뉴스를 생성해주세요.
     """
     
