@@ -16,6 +16,7 @@ def generate_prompt(age_group, job, household, region, scenario):
     job_data = metadata["B"][job]
     household_data = metadata["C"][household]
     region_data = metadata["D"][region]
+    scenario_data = metadata["E"][scenario]
     
     prompt = f"""
     고객 프로필:
@@ -54,6 +55,7 @@ def generate_prompt(age_group, job, household, region, scenario):
       주요 산업: {', '.join(region_data['주요_산업'])}
 
     특정 시나리오: {scenario}
+    설명: {scenario_data['설명']}
 
     이 시나리오를 중심으로, 고객 프로필과 지역 특성에 맞춘 보험 상품이나 서비스를 소개하는 카드뉴스를 작성해주세요. 
     지역의 특성, 니즈, 관심사, 주요 산업을 고려하여 고객에게 더욱 관련성 높은 내용을 제공하세요.
@@ -107,7 +109,10 @@ age_group = st.selectbox('연령대', list(metadata["A"].keys()))
 job = st.selectbox('직업', list(metadata["B"].keys()))
 household = st.selectbox('가구 형태', list(metadata["C"].keys()))
 region = st.selectbox('거주 지역', list(metadata["D"].keys()))
-scenario = "휴가철 운전"
+
+# 시나리오 선택 옵션 추가
+scenario = st.selectbox('시나리오', list(metadata["E"].keys()))
+#scenario = "휴가철 운전"
 if st.button('카드뉴스 생성'):
     prompt = generate_prompt(age_group, job, household, region, scenario)
     with st.spinner('카드뉴스를 생성 중입니다...'):
