@@ -3,6 +3,20 @@ import openai
 from dotenv import load_dotenv
 import os
 from metadata import metadata
+import streamlit as st
+from PIL import Image
+
+# 이미지 파일 로드
+favicon = Image.open('images/favicon.png')
+
+st.set_page_config(
+    page_title="DB손해보험의 고객맞춤형 카드뉴스 문구 생성 AI",
+    page_icon=favicon,
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+
 
 # Load environment variables
 load_dotenv()
