@@ -111,4 +111,5 @@ if st.button('카드뉴스 생성'):
     st.write(card_news)
     
     st.subheader('사용된 프롬프트')
-    st.text(prompt)
+    st.text('현재 비공개')
+    #st.text(prompt)
