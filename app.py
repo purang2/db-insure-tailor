@@ -10,7 +10,7 @@ from PIL import Image
 favicon = Image.open('images/favicon.png')
 
 st.set_page_config(
-    page_title="DB손해보험의 고객맞춤형 카드뉴스 문구 생성 AI",
+    page_title="고객맞춤형 개인화 카드뉴스 문구 생성 AI",
     page_icon=favicon,
     layout="wide",
     initial_sidebar_state="expanded"
@@ -56,7 +56,7 @@ def generate_prompt(age_group, job, household, region, scenario):
     """
     
     prompt = f"""
-당신은 ABC손해보험의 UX 라이팅 전문가입니다. 다음 고객 프로필과 특정 시나리오에 맞는 보험 관련 문자 메시지 카드뉴스를 작성해주세요:
+당신은 DB손해보험의 UX 라이팅 전문가입니다. 다음 고객 프로필과 특정 시나리오에 맞는 보험 관련 문자 메시지 카드뉴스를 작성해주세요:
 
     고객 프로필:
     - 연령대: {age_group} (키워드: {', '.join(age_data['키워드'])})
@@ -117,7 +117,7 @@ def generate_card_news(prompt):
     )
     return response.choices[0].message['content']
 
-st.title('[DB손보] 맞춤형 카드뉴스 문구')
+st.title('[DB손보] 고객맞춤형 개인화 카드뉴스 문구 생성 AI')
 
 age_group = st.selectbox('연령대', list(metadata["A"].keys()))
 job = st.selectbox('직업', list(metadata["B"].keys()))
