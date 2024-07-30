@@ -35,9 +35,10 @@ def generate_prompt(age_group, job, household, region):
 
     카드뉴스 구성:
     1. 흥미로운 제목
-    2. 3-4개의 주요 포인트
+    2. 2-3개의 주요 포인트
     3. 관련 이미지나 아이콘 제안
     4. 행동 유도 문구(CTA)
+    5. 키워드 위주
     """
     prompt = f"""
     def generate_prompt(age_group, job, household, region):
