@@ -11,7 +11,7 @@ load_dotenv()
 #openai.api_key = os.getenv("OPENAI_API_KEY")
 openai.api_key = st.secrets["openai"]
 
-def generate_prompt(age_group, job, household, region):
+def generate_prompt(age_group, job, household, region, scenario):
     age_data = metadata["A"][age_group]
     job_data = metadata["B"][job]
     household_data = metadata["C"][household]
@@ -101,9 +101,9 @@ age_group = st.selectbox('연령대', list(metadata["A"].keys()))
 job = st.selectbox('직업', list(metadata["B"].keys()))
 household = st.selectbox('가구 형태', list(metadata["C"].keys()))
 region = st.selectbox('거주 지역', list(metadata["D"].keys()))
-
+scenario = "휴가철 운전"
 if st.button('카드뉴스 생성'):
-    prompt = generate_prompt(age_group, job, household, region)
+    prompt = generate_prompt(age_group, job, household, region, scenario)
     with st.spinner('카드뉴스를 생성 중입니다...'):
         card_news = generate_card_news(prompt)
     st.subheader('생성된 카드뉴스')
