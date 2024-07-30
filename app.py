@@ -56,7 +56,7 @@ def generate_prompt(age_group, job, household, region, scenario):
     """
     
     prompt = f"""
-    당신은 DB손해보험의 UX 라이팅 전문가입니다. 다음 고객 프로필과 특정 시나리오에 맞는 보험 관련 문자 메시지 카드뉴스를 작성해주세요:
+    당신은 ABC손해보험의 UX 라이팅 전문가입니다. 다음 고객 프로필과 특정 시나리오에 맞는 보험 관련 문자 메시지 카드뉴스를 작성해주세요:
 
     고객 프로필:
     - 연령대: {age_group} (키워드: {', '.join(age_data['키워드'])})
