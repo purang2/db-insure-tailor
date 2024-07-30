@@ -12,8 +12,6 @@ favicon = Image.open('images/favicon.png')
 st.set_page_config(
     page_title="개인화된 메시지 생성 AI",
     page_icon=favicon,
-    layout="wide",
-    initial_sidebar_state="expanded"
 )
 
 
