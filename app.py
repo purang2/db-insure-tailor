@@ -39,6 +39,49 @@ def generate_prompt(age_group, job, household, region):
     3. 관련 이미지나 아이콘 제안
     4. 행동 유도 문구(CTA)
     """
+    prompt = f"""
+    def generate_prompt(age_group, job, household, region):
+    age_data = metadata["A"][age_group]
+    job_data = metadata["B"][job]
+    household_data = metadata["C"][household]
+    region_data = metadata["D"][region]
+    """
+    
+    prompt = f"""
+    당신은 ABC손해보험의 UX 라이팅 전문가입니다. 다음 고객 프로필에 맞는 보험 관련 문자 메시지 카드뉴스를 작성해주세요:
+
+    고객 프로필:
+    - 연령대: {age_group}
+    - 직업: {job}
+    - 가구 형태: {household}
+    - 거주 지역: {region}
+
+    ABC손해보험의 UX 라이팅 시스템을 따라 다음 원칙을 준수하여 작성해주세요:
+
+    1. Clear (명확한): 단순하고 이해하기 쉬운 언어를 사용하세요. 전문 용어는 피하고, 필요한 경우 간단히 설명하세요.
+
+    2. Concise (간결한): 핵심 메시지만 간결하게 전달하세요. 불필요한 단어나 문장은 제거하세요.
+
+    3. Casual (친근한): 친근하고 대화체로 작성하되, 전문성을 잃지 않도록 주의하세요.
+
+    4. Respect (존중하는): 고객을 존중하는 톤으로 작성하고, 강요하는 표현은 피하세요.
+
+    5. Emotional (공감하는): 고객의 상황과 감정에 공감하는 메시지를 포함하세요.
+
+    추가 지침:
+    - Predictable hint: 다음 단계나 행동을 예측할 수 있는 힌트를 제공하세요.
+    - Focus on key message: 가장 중요한 정보만 선별하여 전달하세요.
+    - Easy to speak: 소리 내어 읽었을 때 자연스러운 문장을 사용하세요.
+    - Suggest than force: 강요보다는 제안하는 톤을 사용하세요.
+    - Find hidden emotion: 정보 뒤에 숨은 고객의 감정을 고려하세요.
+
+    카드뉴스 구성:
+    1. 주의를 끄는 제목 (10자 이내)
+    2. 핵심 메시지 1-2문장 (각 20자 이내)
+    3. 행동 유도 문구(CTA) (15자 이내)
+
+    위 지침을 따라 고객 프로필에 맞는 간결하고 효과적인 카드뉴스를 생성해주세요.
+    """
     
     return prompt
 
