@@ -93,6 +93,7 @@ def generate_prompt(age_group, job, household, region, scenario):
 age_prompts = {
     "20대": """
     당신은 DB손해보험의 UX 라이팅 전문가입니다. 20대를 위한 보험 관련 문자 메시지 카드뉴스를 작성해주세요.
+    트렌디해도 좋습니다. 힙한 반말도 가능합니다.
     
     고객 프로필:
     - 연령대: 20대 (키워드: {', '.join(metadata['A']['20대']['키워드'])})
