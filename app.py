@@ -252,7 +252,7 @@ def generate_card_news(prompt):
     response = openai.ChatCompletion.create(
         model="gpt-4o",
         messages=[
-            {"role": "system", "content": "당신은 보험 회사 ABC손해보험의 광고 카피라이팅 전문가입니다. 마음을 울리는 스토리텔링 카피라이팅을 지향해야 합니다."},
+            {"role": "system", "content": "당신은 보험 회사 광고 카피라이팅 전문가입니다. 당신은 베테랑으로서 잠재적인 고객층을 항상 생각하되 튀지 않고, 절제미, 함축미, 타겟 고객층 누구에게나 오래 남을 명작이 되기 위한 유려함보다는 단 하나의 포인트가 중요하다고 생각합니다."},
             {"role": "user", "content": prompt}
         ],
         max_tokens=500
