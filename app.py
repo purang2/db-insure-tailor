@@ -21,8 +21,7 @@ load_dotenv()
 
 # Set up OpenAI API key
 #openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = st.secrets["openai"]
-def generate_prompt(age_group, job, household, region, scenario):
+openai.api_key = st.secrets["openai"]def generate_prompt(age_group, job, household, region, scenario):
     age_data = metadata["A"][age_group]
     job_data = metadata["B"][job]
     household_data = metadata["C"][household]
@@ -39,27 +38,35 @@ def generate_prompt(age_group, job, household, region, scenario):
     - **직업:** {job} (특성: {', '.join(job_data.get('특성', []))})
     - **가구 형태:** {household} (특성: {', '.join(household_data.get('특성', []))})
     - **거주 지역:** {region} (특성: {', '.join(region_data.get('특성', []))})
-    - **시나리오:** {scenario} - {scenario_data.get('설명', '설명 없음')}
+    - **시나리오:** {scenario}
+      - 설명: {scenario_data.get('설명', '설명 없음')}
+      - 세부 시나리오: {', '.join(scenario_data.get('세부_시나리오', {}).keys())}
+      - 연령대별/직업군별 팁: {', '.join(scenario_data.get('연령대별_팁', scenario_data.get('직업군별_팁', {})).keys())}
+      - 통계: {scenario_data.get('통계', '통계 정보 없음')}
+      - 관련 보험: {scenario_data.get('관련_보험', '관련 보험 정보 없음')}
 
     작성 시 다음 사항을 고려해주세요:
-    1. 신뢰할 수 있는 출처의 통계 데이터로 시작하여 관심을 끌어주세요. 출처를 간략히 언급하세요.
+    1. 제공된 통계 데이터로 시작하여 관심을 끌어주세요.
     2. {age_group}의 상황과 {scenario}에 대해 깊이 공감하되, 과도한 불안감을 조성하지 않도록 주의하세요.
     3. {job}과(와) {household}의 특성을 고려한 실용적인 팁을 제공하세요. 다양한 문화적 배경을 고려하세요.
     4. {region}의 특성과 주요 산업을 반영한 지역 맞춤 정보를 포함하세요.
-    5. {scenario}와 관련된 안전과 대비의 중요성을 언급하되, 보험 외의 대안적 해결책도 함께 제시하세요.
-    6. {age_group}의 디지털 친화도와 금융 이해도를 고려한 적절한 용어를 사용하세요.
-    7. 개인정보 보호와 관련하여, 이 메시지가 고객의 동의하에 제공되며 언제든 수신 거부할 수 있음을 명시하세요.
+    5. 선택된 세부 시나리오에 대한 구체적인 조언을 제공하세요.
+    6. 해당 연령대나 직업군에 맞는 특화된 팁을 포함하세요.
+    7. {scenario}와 관련된 안전과 대비의 중요성을 언급하되, 보험 외의 대안적 해결책도 함께 제시하세요.
+    8. {age_group}의 디지털 친화도와 금융 이해도를 고려한 적절한 용어를 사용하세요.
+    9. 관련 보험 상품을 자연스럽게 소개하되, 직접적인 판매 권유는 피하세요.
+    10. 개인정보 보호와 관련하여, 이 메시지가 고객의 동의하에 제공되며 언제든 수신 거부할 수 있음을 명시하세요.
 
     카드뉴스 구성:
-    1. 신뢰할 수 있는 통계와 공감 메시지 결합 (10단어 이내)
-    2. {scenario}에 대한 실용적 팁과 {region} 특성을 반영한 정보 제공 (14단어 이내)
-    3. 고객 프로필에 맞춘 맞춤형 조언 또는 미니 스토리텔링 (10단어 이내)
-    4. 안전과 대비의 중요성을 강조하는 메시지와 다양한 대응 방안 (10단어 이내)
-    5. AI 생성 콘텐츠 명시 및 개인정보 보호 관련 안내 (7단어 이내)
+    1. 통계 데이터와 공감 메시지 결합 (15단어 이내)
+    2. 선택된 세부 시나리오에 대한 실용적 팁 제공 (15단어 이내)
+    3. 연령대/직업군별 특화 팁 (10단어 이내)
+    4. 지역 특성을 반영한 맞춤 정보 (10단어 이내)
+    5. 안전과 대비의 중요성 강조 및 관련 보험 상품 소개 (15단어 이내)
+    6. AI 생성 콘텐츠 명시 및 개인정보 보호 관련 안내 (10단어 이내)
 
-    전체 내용은 50단어 이내로, 선택된 시나리오를 중심으로 고객 프로필에 맞춰 균형 잡힌 정보를 제공해주세요. {age_specific_prompt}
+    전체 내용은 75단어 이내로, 선택된 시나리오를 중심으로 고객 프로필에 맞춰 균형 잡힌 정보를 제공해주세요. {age_specific_prompt}
     """
-
     return prompt
 
 age_prompts = {
