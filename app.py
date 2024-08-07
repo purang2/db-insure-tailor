@@ -105,7 +105,9 @@ def generate_card_news(prompt):
     )
     
     ai_generated_content = response.choices[0].message['content']
-    disclaimer = "\n\n[이 내용은 AI에 의해 생성되었으며, 개인의 상황에 따라 다를 수 있습니다. 중요한 결정에는 전문가와 상담하세요.]"
+
+    disclaimer = ""
+    #disclaimer = "\n\n[이 내용은 AI에 의해 생성되었으며, 개인의 상황에 따라 다를 수 있습니다. 중요한 결정에는 전문가와 상담하세요.]"
     
     return ai_generated_content + disclaimer
     
